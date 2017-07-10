@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_2" LaunchPart="xc7a100tfgg676-2L" LaunchTime="1499585752">
+  <File Type="PWROPT-DRC" Name="apollo_cpu_sopc_drc_pwropted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="apollo_cpu_sopc_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="apollo_cpu_sopc_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="apollo_cpu_sopc_power_routed.rpx"/>
+  <File Type="PA-TCL" Name="apollo_cpu_sopc.tcl"/>
+  <File Type="OPT-HWDEF" Name="apollo_cpu_sopc.hwdef"/>
+  <File Type="RDI-RDI" Name="apollo_cpu_sopc.vdi"/>
+  <File Type="OPT-DCP" Name="apollo_cpu_sopc_opt.dcp"/>
+  <File Type="OPT-DRC" Name="apollo_cpu_sopc_drc_opted.rpt"/>
+  <File Type="OPT-TIMING" Name="apollo_cpu_sopc_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DCP" Name="apollo_cpu_sopc_pwropt.dcp"/>
+  <File Type="PWROPT-TIMING" Name="apollo_cpu_sopc_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="apollo_cpu_sopc_placed.dcp"/>
+  <File Type="PLACE-IO" Name="apollo_cpu_sopc_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="apollo_cpu_sopc_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="apollo_cpu_sopc_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="apollo_cpu_sopc_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="apollo_cpu_sopc_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="apollo_cpu_sopc_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="apollo_cpu_sopc_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="apollo_cpu_sopc_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="apollo_cpu_sopc_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="apollo_cpu_sopc_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="apollo_cpu_sopc_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="apollo_cpu_sopc_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="apollo_cpu_sopc_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="apollo_cpu_sopc_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="apollo_cpu_sopc_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="apollo_cpu_sopc_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="apollo_cpu_sopc_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="apollo_cpu_sopc_drc_routed.pb"/>
+  <File Type="BG-BIN" Name="apollo_cpu_sopc.bin"/>
+  <File Type="ROUTE-DRC-RPX" Name="apollo_cpu_sopc_drc_routed.rpx"/>
+  <File Type="BG-DRC" Name="apollo_cpu_sopc.drc"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="apollo_cpu_sopc_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-MSK" Name="apollo_cpu_sopc.msk"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="apollo_cpu_sopc_methodology_drc_routed.rpx"/>
+  <File Type="BG-BGN" Name="apollo_cpu_sopc.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="apollo_cpu_sopc_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="apollo_cpu_sopc_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="apollo_cpu_sopc_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="apollo_cpu_sopc_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="apollo_cpu_sopc_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="apollo_cpu_sopc_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="apollo_cpu_sopc_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="apollo_cpu_sopc_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="apollo_cpu_sopc_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="apollo_cpu_sopc_clock_utilization_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="apollo_cpu_sopc_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="apollo_cpu_sopc_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="apollo_cpu_sopc_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="apollo_cpu_sopc_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="apollo_cpu_sopc_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="apollo_cpu_sopc.bit"/>
+  <File Type="BITSTR-RBT" Name="apollo_cpu_sopc.rbt"/>
+  <File Type="BITSTR-NKY" Name="apollo_cpu_sopc.nky"/>
+  <File Type="BITSTR-BMM" Name="apollo_cpu_sopc_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="apollo_cpu_sopc.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="apollo_cpu_sopc.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../src/defines.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/apollo_cpu.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/clk_master.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/cp0_reg.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/ctrl.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/debugger.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/div.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/ex.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/ex_mem.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/hilo_reg.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/rom.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/com_defines.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/hub.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/id.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/id_ex.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/if_id.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/ife.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/kbd_controller.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/mem.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/mem_wb.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/mmu.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/pc_reg.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/regfile.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/seg_disp.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/uart_async.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/uart_controller.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/vga.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/apollo_cpu_sopc.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/data_ram.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/uart_sim.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/flash_sim.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../unittest/test_ex.v">
+      <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../unittest/defines.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../unittest/com_defines.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../unittest/assert.v">
+      <FileInfo SFType="VHeader">
+        <Attr Name="Library" Val="xil_defaultlib"/>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/import_ise_summary.txt"/>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="apollo_cpu_sopc"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/NEHCPU.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/NEHCPU.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="vga_ram"/>
+</GenRun>
