@@ -1,0 +1,4 @@
+#include <thumips.h>
+#include <intr.h>
+#include <asm/mipsregs.h>
+
