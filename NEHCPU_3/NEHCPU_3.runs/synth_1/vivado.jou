@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Tue Jul 25 23:54:06 2017
+# Process ID: 6896
+# Current directory: G:/AbandonMIPS/AbandonMIPS/v1.0/Abandon_MIPS/src/NEHCPU_3/NEHCPU_3.runs/synth_1
+# Command line: vivado.exe -log nehcpu_sopc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source nehcpu_sopc.tcl
+# Log file: G:/AbandonMIPS/AbandonMIPS/v1.0/Abandon_MIPS/src/NEHCPU_3/NEHCPU_3.runs/synth_1/nehcpu_sopc.vds
+# Journal file: G:/AbandonMIPS/AbandonMIPS/v1.0/Abandon_MIPS/src/NEHCPU_3/NEHCPU_3.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source nehcpu_sopc.tcl -notrace

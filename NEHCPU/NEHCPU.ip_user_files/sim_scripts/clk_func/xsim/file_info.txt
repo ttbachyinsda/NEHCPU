@@ -1,3 +1,0 @@
-clk_func_clk_wiz.v,verilog,xil_defaultlib,../../../ip/clk_func/clk_func_clk_wiz.v,incdir="$ref_dir/../../../ipstatic"incdir="../../../ipstatic"
-clk_func.v,verilog,xil_defaultlib,../../../ip/clk_func/clk_func.v,incdir="$ref_dir/../../../ipstatic"incdir="../../../ipstatic"
-glbl.v,Verilog,xil_defaultlib,glbl.v
