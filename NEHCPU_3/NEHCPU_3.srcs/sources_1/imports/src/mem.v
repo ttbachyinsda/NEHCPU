@@ -42,7 +42,6 @@ module mem(
 	output reg[`RegBus]			mem_data_o,
 	output reg 					mem_ce_o,
 
-	//???????׶ε???
 	output reg[`RegAddrBus]		wd_o,
 	output reg                  wreg_o,
 	output reg[`RegBus]			wdata_o,
@@ -73,12 +72,6 @@ module mem(
 	input wire[`RegBus] cp0_entrylo1_i,
 	input wire[`RegBus] cp0_entryhi_i,
 	output wire[`TLB_WRITE_STRUCT_WIDTH - 1:0] tlb_write_struct_o
-	// `define TLB_WRITE_STRUCT_WIDTH 68 // 1 + 4 + 63
-	// `define TLB_ENTRY_WIDTH 63
-	// //TLB entry: VPN2=[62: 44] 
-	// //           P1=([42: 24], [23: 22])
-	// //           P0=([21: 2], [1: 0])
-	// `define TLB_INDEX_WIDTH 4   // total 16 entries
 	
 );
 
@@ -118,7 +111,6 @@ module mem(
 			excepttype_o <= `ZeroWord;
 		end else begin
 			excepttype_o <= `ZeroWord;	
-			// if flush == 1, current_inst_addr will be `ZeroWord
 			if(current_inst_addr_i != `ZeroWord) begin
 				if(((cp0_cause[15:8] & (cp0_status[15:8])) != 8'h00) &&
 				 	(cp0_status[1] == 1'b0) && (cp0_status[0] == 1'b1)) begin
@@ -129,16 +121,13 @@ module mem(
 				end
 				else if(excepttype_i[13] == 1'b1) begin  
 					excepttype_o <= 32'h0000000f;        // tlbl_inst
-					// $display("mem stage, inst_tlbl, current_inst_addr_o = %h, badvaddr_o = %h", current_inst_addr_o, badvaddr_o);
 				end	 
 				else if(is_tlbl_data && (mem_addr_i != `ZeroWord)) begin 
 					excepttype_o <= 32'h00000011;        // is tlbl data
-			//		$display("mem_stage, current_inst_addr = %h", current_inst_addr_i);
 				end
 				else if(is_tlbs && (mem_addr_i != `ZeroWord)) begin 
 					excepttype_o <= 32'h00000012;        // is tlbs
 				end
-				// the priority of tlb mod should be lower than tlbl and tlbs
 				else if(is_tlb_modify && (mem_addr_i != `ZeroWord)) begin 
 					excepttype_o <= 32'h00000010;        // is tlb modify
 				end
@@ -158,7 +147,6 @@ module mem(
 		end // else
 	end // always
 
-	// if exception occurs, stop writing memory
 	assign mem_we_o = mem_we & (~(|excepttype_o));
 	
 	always @ (*) begin
@@ -187,7 +175,6 @@ module mem(
 		  	whilo_o <= whilo_i;
 		  	hi_o <= hi_i;
 		  	lo_o <= lo_i;
-		  	//cp0
 		  	cp0_reg_we_o <= cp0_reg_we_i;
 		  	cp0_reg_write_addr_o <= cp0_reg_write_addr_i;
 		  	cp0_reg_data_o <= cp0_reg_data_i;	
@@ -195,12 +182,7 @@ module mem(
 			mem_addr_o <= `ZeroWord;
 			mem_we <= `WriteDisable;
 			mem_sel_o <= 4'b1111;
-		//	mem_data_o <= `ZeroWord;
 			mem_ce_o <= `ChipDisable;
-
-			// ***********
-			// ????????
-			// ***********
 
 			case (aluop_i)
 				`EXE_LB_OP: begin 
@@ -211,30 +193,18 @@ module mem(
 						2'b00: begin 
 							wdata_o <= {{24{mem_data_i[7]}}, mem_data_i[7: 0]};
 							mem_sel_o <= 4'b0001;
-							// wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31: 24]};
-							// mem_sel_o <= 4'b1000;
-							// mem_sel_o <= 4'b0001;
 						end
 						2'b01: begin
 							wdata_o <= {{24{mem_data_i[15]}}, mem_data_i[15: 8]};
 							mem_sel_o <= 4'b0010;
-							// wdata_o <= {{24{mem_data_i[23]}}, mem_data_i[23: 16]};
-							// mem_sel_o <= 4'b0100;
-							// mem_sel_o <= 4'b0010; 
 						end
 						2'b10: begin
 							wdata_o <= {{24{mem_data_i[23]}}, mem_data_i[23: 16]};
 							mem_sel_o <= 4'b0100;
-							// wdata_o <= {{24{mem_data_i[15]}}, mem_data_i[15: 8]};
-							// mem_sel_o <= 4'b0010; 
-							// mem_sel_o <= 4'b0100;
 						end
 						2'b11: begin
 							wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31: 24]};
 							mem_sel_o <= 4'b1000;
-							// wdata_o <= {{24{mem_data_i[7]}}, mem_data_i[7: 0]};
-							// mem_sel_o <= 4'b0001;
-							// mem_sel_o <= 4'b1000; 
 						end		
 						default: begin
                             wdata_o <= `ZeroWord;
@@ -249,30 +219,18 @@ module mem(
 						2'b00: begin 
 							wdata_o <= {{24{1'b0}}, mem_data_i[7: 0]};
 							mem_sel_o <= 4'b0001;
-							// wdata_o <= {{24{1'b0}}, mem_data_i[31: 24]};
-							// mem_sel_o <= 4'b1000;
-							// mem_sel_o <= 4'b0001;
 						end
 						2'b01: begin
 							wdata_o <= {{24{1'b0}}, mem_data_i[15: 8]};
 							mem_sel_o <= 4'b0010; 
-							// wdata_o <= {{24{1'b0}}, mem_data_i[23: 16]};
-							// mem_sel_o <= 4'b0100;
-							// mem_sel_o <= 4'b0010; 
 						end
 						2'b10: begin
 							wdata_o <= {{24{1'b0}}, mem_data_i[23: 16]};
 							mem_sel_o <= 4'b0100;
-							// wdata_o <= {{24{1'b0}}, mem_data_i[15: 8]};
-							// mem_sel_o <= 4'b0010; 
-							// mem_sel_o <= 4'b0100;
 						end
 						2'b11: begin
 							wdata_o <= {{24{1'b0}}, mem_data_i[31: 24]};
 							mem_sel_o <= 4'b1000;
-							// wdata_o <= {{24{1'b0}}, mem_data_i[7: 0]};
-							// mem_sel_o <= 4'b0001;
-							// mem_sel_o <= 4'b1000; 
 						end
 						default: begin
                             wdata_o <= `ZeroWord;
@@ -287,16 +245,10 @@ module mem(
 						2'b00: begin 
 							wdata_o <= {{16{1'b0}}, mem_data_i[15: 0]};
 							mem_sel_o <= 4'b0011;
-							// wdata_o <= {{16{1'b0}}, mem_data_i[31: 15]};
-							// mem_sel_o <= 4'b1100;
-							// mem_sel_o <= 4'b0011;
 						end
 						2'b10: begin
 							wdata_o <= {{16{1'b0}}, mem_data_i[31: 15]};
 							mem_sel_o <= 4'b1100;
-							// wdata_o <= {{16{1'b0}}, mem_data_i[15: 0]};
-							// mem_sel_o <= 4'b0011;
-							// mem_sel_o <= 4'b1100; 
 						end
 						default: begin
                             wdata_o <= `ZeroWord;
@@ -304,10 +256,6 @@ module mem(
 					endcase
 				end // exe_lhu_op
 				`EXE_LW_OP: begin 
-//					if(current_inst_addr_i == 32'h8000e15c) begin
-						// $display("lw, mem_addr = %h, data = %h, inst_addr = %h", 
-							// mem_addr_i, mem_data_i, current_inst_addr_i);
-//					end
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_ce_o <= `ChipEnable;
@@ -322,19 +270,15 @@ module mem(
 					case (mem_addr_i[1: 0])
 						2'b00: begin 
 							mem_sel_o <= 4'b0001;
-							// mem_sel_o <= 4'b1000;
 						end
 						2'b01: begin
-							mem_sel_o <= 4'b0010;
-							// mem_sel_o <= 4'b0100; 							
+							mem_sel_o <= 4'b0010;						
 						end
 						2'b10: begin
-							mem_sel_o <= 4'b0100;
-							// mem_sel_o <= 4'b0010; 							
+							mem_sel_o <= 4'b0100;						
 						end
 						2'b11: begin
 							mem_sel_o <= 4'b1000;
-							// mem_sel_o <= 4'b0001; 
 						end
 						default: begin
 							mem_sel_o <= 4'b0000;
@@ -342,8 +286,6 @@ module mem(
 					endcase
 				end
 				`EXE_SW_OP: begin 
-					// $display("sw, mem_addr = %h, data = %h, inst_addr = %h", 
-									// mem_addr_i, reg2_i, current_inst_addr_i);
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteEnable;
 					mem_ce_o <= `ChipEnable;
@@ -356,7 +298,6 @@ module mem(
 		end //if
 	end //always
 
-	// get the newest value of cp0_status
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			cp0_status <= `ZeroWord;

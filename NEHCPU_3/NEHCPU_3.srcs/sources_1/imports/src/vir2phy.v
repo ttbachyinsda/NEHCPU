@@ -95,27 +95,13 @@ assign tlb_miss = (~|hit);
 assign physical_addr_tlb = {PFN, virtual_addr[11: 0]};
 
 
-// `define TLB_ENTRY_WIDTH 63
-// //TLB entry: VPN2=[62: 44] 
-// //           P1=([43: 24], [23: 22])  - PFN, D, V
-// //           P0=([21: 2], [1: 0])
-
-//genvar i;
-//generate
 always @ (*) begin: name   
 	integer i;
 	for (i = 0; i < `TLB_NR_ENTRY; i = i + 1)  begin: gen_block
-//        assign hit[i] = (tlb_entry[i][62: 44] == virtual_addr[31: 13]);
 		      hit[i] <= (tlb_entry[i][62: 44] == virtual_addr[31: 13]);
         if(virtual_addr == 32'h00000100 && hit[i] == 1'b1) begin
-   //       $display("vir2phy, tlb entry hit at %d", i);
         end
-        // if(hit[i] == 1'b1) begin
-        //     hit_index <= i;
-        // end
     end // for
-    if(virtual_addr == 32'h00000100) begin
-   //    $display("physical_addr_tlb = %h", physical_addr_tlb);
     end
 end
 //endgenerate

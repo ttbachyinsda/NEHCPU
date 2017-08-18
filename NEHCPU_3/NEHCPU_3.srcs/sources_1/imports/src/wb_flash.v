@@ -36,8 +36,6 @@ module flash_top(
     wire flash_byte = 1, flash_vpen = 1, flash_rp = 1;
     wire flash_ce;
     assign flash_ce = ~wb_acc;
-    //assign flash_oe = !wb_rd;
-    //assign flash_we = !wb_wr;
     assign flash_ctrl = {
         flash_byte,
         flash_ce,
@@ -51,10 +49,8 @@ module flash_top(
     assign flash_dat_io = flash_oe ? data_to_write : {16{1'bz}};
 
 
-    //assign flash_rst = !wb_rst_i;
 
-    reg [3:0] waitstate;            //Áä∂Ê?ÅÊú∫   
-    //wire    [1:0] adr_low;
+    reg [3:0] waitstate;            
 
     
     always @(posedge wb_clk_i) begin

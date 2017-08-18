@@ -4,7 +4,6 @@ module ex(
 
 	input wire                    rst,
 	
-	//送到执行阶段的信息
 	input wire[`AluOpBus]         aluop_i,
 	input wire[`AluSelBus]        alusel_i,
 	input wire[`RegBus]           reg1_i,		// 32bit 
@@ -82,8 +81,6 @@ module ex(
 	wire[`DoubleRegBus] hilo_temp;
 	reg[`DoubleRegBus] mulres;
 
-	// exception assign
-	// load and store exception_type
     wire is_ADEL, is_ADES;
     assign is_ADES = (aluop_o == `EXE_SW_OP && mem_addr_o[1: 0] != 2'b00);
     assign is_ADEL = (aluop_o == `EXE_LHU_OP && mem_addr_o[0] != 1'b0) || 
@@ -92,18 +89,15 @@ module ex(
 	assign excepttype_o = {excepttype_i[31: 12], is_ADES, is_ADEL, excepttype_i[9: 0]};
 
 	assign current_inst_addr_o = current_inst_addr_i;
-	//delay slot
 	assign is_in_delayslot_o = is_in_delayslot_i;
 
 
-	//debug 
     always @ (*) begin 
         if(|excepttype_o) begin 
             $display("excepttype_o = %h, inst = %h", excepttype_o, inst_i);
         end
     end
 
-	// logic operation
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			logicout <= `ZeroWord;
@@ -129,7 +123,6 @@ module ex(
 		end //if
 	end //always
 
-	// shift operation
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			shiftres <= `ZeroWord;
@@ -153,9 +146,6 @@ module ex(
 		end //if
 	end //always
 
-	// move operation
-	
-	// correlated data
 	always @ (*) begin 
 		if(rst == `RstEnable) begin	
 			{HI, LO} <= {`ZeroWord, `ZeroWord};
@@ -256,8 +246,6 @@ module ex(
 		end
 	end
 
-	// arithmetic
-	// if subu or slt, reg2 => two's complement
 	assign reg2_i_mux = ((aluop_i == `EXE_SUBU_OP) || (aluop_i == `EXE_SLT_OP))?
 						(~reg2_i + 1): reg2_i;
     assign result_sum = reg1_i + reg2_i_mux;

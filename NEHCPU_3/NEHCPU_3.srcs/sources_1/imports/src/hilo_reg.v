@@ -1,24 +1,5 @@
 `timescale 1ns / 1ps
 `include "defines.v"
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    22:17:24 10/26/2016 
-// Design Name: 
-// Module Name:    hilo_reg 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
 module hilo_reg(
     input wire					rst,
     input wire					clk,

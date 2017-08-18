@@ -1,5 +1,3 @@
-// actually, wb is achieved in regfile
-
 `include "defines.v"
 
 module mem_wb(

@@ -34,9 +34,6 @@ module sram_top(
 
 	assign baseram_ce = ~(wb_acc & ~ram_selector);
 	assign extram_ce = ~(wb_acc & ram_selector);
-	// assign baseram_oe = ~(wb_rd & ~ram_selector & ~ram_oe);		
-	// assign extram_oe = ~(wb_rd & ram_selector & ~ram_oe);
-	//write byte may read first
 	assign baseram_oe = ram_selector | ram_oe;
 	assign extram_oe = (~ram_selector) | ram_oe;
 	assign baseram_we = ~(wb_wr & ~ram_selector & ~ram_we);

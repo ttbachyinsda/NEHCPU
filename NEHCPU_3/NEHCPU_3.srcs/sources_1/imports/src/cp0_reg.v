@@ -11,16 +11,11 @@ module cp0_reg (
     input wire[4: 0] raddr_i,
     input wire[`RegBus] data_i,
 
-    // exception
     input wire[7: 0] int_i, // interupt from peripherals and software
     input wire[31:0] excepttype_i,  
     input wire[`RegBus] current_inst_addr_i,
     input wire[`RegBus] unaligned_addr_i,
     input wire is_in_delayslot_i,
-    // tlb exception
-    // input wire is_tlb_modify,
-    // input wire is_tlbl_data,
-    // input wire is_tlbs,
     input wire[`RegBus] badvaddr_i,
     output wire[`RegBus] exc_vec_addr_o,
 

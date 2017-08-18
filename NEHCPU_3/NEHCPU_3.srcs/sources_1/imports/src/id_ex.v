@@ -7,7 +7,6 @@ module id_ex(
 
 	input wire[5:0]               stall,
 
-	//从译码阶段传递的信息
 	input wire[`AluOpBus]         id_aluop,		// 8bit, operation subtype
 	input wire[`AluSelBus]        id_alusel,	// 3bit, operation type
 	input wire[`RegBus]           id_reg1,		// 32bit, operation number 1  
@@ -26,7 +25,6 @@ module id_ex(
     input wire[`RegBus]           id_current_inst_addr,
     input wire[31: 0]             id_excepttype,
 
-	//传递到执行阶段的信息
 	output reg[`AluOpBus]         ex_aluop,
 	output reg[`AluSelBus]        ex_alusel,
 	output reg[`RegBus]           ex_reg1,

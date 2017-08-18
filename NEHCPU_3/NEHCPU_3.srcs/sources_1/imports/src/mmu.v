@@ -1,16 +1,5 @@
 `include "defines.v"
 
-// `define TLB_WRITE_STRUCT_WIDTH 68 // 1 + 4 + 63 
-
-// `define TLB_ENTRY_WIDTH 63
-// //TLB entry: VPN2=[62: 44] 
-// //           P1=([43: 24], [23: 22])  - PFN, D, V
-// //           P0=([21: 2], [1: 0])
-
-// `define TLB_INDEX_WIDTH 4   // total 16 entries
-
-// `define TLB_NR_ENTRY    (1 << `TLB_INDEX_WIDTH)
-
 module mmu (
     input wire clk,    // Clock
     input wire rst,  // Asynchronous reset active low
@@ -38,22 +27,6 @@ module mmu (
     reg [`TLB_ENTRY_WIDTH-1: 0] tlb_entry[0: `TLB_NR_ENTRY - 1];
 
 
-    
-
-    // *********************** convert addr **************************/
-    // NAIVE, tlb addr convert, virtual -> physical
-    // always @ (*) begin
-    //     if(rst == `RstEnable) begin
-    //         inst_addr_o <= `ZeroWord;
-    //         data_addr_o <= `ZeroWord;
-    //     end 
-    //     else begin
-    //         inst_addr_o <= inst_addr_i;
-    //         data_addr_o <= data_addr_i;
-    //     end
-    // end
-
-    // EXCITED, vitual addr -> physical addr
     wire inst_miss;
     wire data_miss;
     wire inst_V;
@@ -122,53 +95,24 @@ module mmu (
     // debug 
     always @(posedge clk) begin
         if(is_tlbl_data) begin
-         //  $display("mmu, tlbl_data, addr = %h", data_addr_i);
         end
         if(is_tlbs) begin
-           // $display("mmu, tlbs, addr = %h", data_addr_i);
         end
     end
 
-    // ******************** exception **************************** //
     assign is_tlb_modify = (!data_is_kseg0_kseg1) && (data_addr_i != `ZeroWord) && is_write_mem && !data_D; // opt_write only occurs when get data from memory 
     assign is_tlbs = (!data_is_kseg0_kseg1) && (data_addr_i != `ZeroWord) && is_write_mem && (data_miss || !data_V); // opt_write only occurs when get data from memory
-  //  assign is_tlbl = !is_write_mem && (inst_miss || data_miss || inst_V || data_V);
     assign is_tlbl_inst = (!inst_is_kseg0_kseg1) && (inst_addr_i != `ZeroWord) && !is_write_mem && (inst_miss || !inst_V);
     assign is_tlbl_data = (!data_is_kseg0_kseg1) && (data_addr_i != `ZeroWord) && !is_write_mem && (data_miss || !data_V);
     assign badvaddr = is_tlbl_inst? inst_addr_i: data_addr_i;
 
-    // always @ (*) begin
-    //     if(is_tlbl_inst) begin 
-    //         badvaddr <= inst_addr_i;
-    //     end
-    //     else if(is_tlbl_data || is_tlb_modify || is_tlbs) begin
-    //         badvaddr <= data_addr_i;
-    //     end
-    //     else begin 
-    //         badvaddr <= `ZeroWord;
-    //     end
-    // end
 
     always @(posedge clk) begin
-       // if(is_tlbl_data) begin
-       //      $display("in mmu, DATA_TLBL, data_addr = %h, badvaddr = %h", data_addr_i, badvaddr);
-       //  end 
-       //  if(data_addr_i == 32'h00000100) begin 
-       //      $display("virtual addr = 00000100, physical_addr = %h", data_addr_o);
-       //      $display("data_is_kseg0_kseg1 = %b, data_addr_i = %h, is_write_mem = %b, data_miss = %b, data_V = %b",
-       //          data_is_kseg0_kseg1, data_addr_i, is_write_mem, data_miss, data_V);
-        // end
         if(data_addr_i == 32'h00000100) begin 
-            // $display("data_is_kseg0_kseg1 = %b, data_addr_i = %h, is_write_mem = %b, data_miss = %b, data_D = %b, data_V = %b",
-                // data_is_kseg0_kseg1, data_addr_i, is_write_mem, data_miss, data_D, data_V);
         end
         if(inst_addr_i == 32'h10003410) begin 
-            // $display("32'h10003410. inst_is_kseg0_kseg1 = %b, inst_addr_i = %h, is_write_mem = %b, inst_miss = %b,
-             // inst_D = %b, inst_V = %b", inst_is_kseg0_kseg1, inst_addr_i, is_write_mem, inst_miss, inst_D, inst_V);
         end
         if(inst_addr_i == 32'h10003414) begin 
-            // $display("32'h10003414. inst_is_kseg0_kseg1 = %b, inst_addr_i = %h, is_write_mem = %b, inst_miss = %b,
-             // inst_D = %b, inst_V = %b", inst_is_kseg0_kseg1, inst_addr_i, is_write_mem, inst_miss, inst_D, inst_V);
         end
     end
 
@@ -180,18 +124,13 @@ module mmu (
     assign {tlb_write_enable, tlb_write_index, tlb_write_entry} = tlb_write_struct;
 
     always @(posedge clk) begin
-        if (rst == `RstEnable) begin : your_name // Declarations not allowed in unnamed block.
-            // reset tlb entry
+        if (rst == `RstEnable) begin : your_name 
             integer i; 
             for(i = 0; i < `TLB_NR_ENTRY; i = i + 1)
                 tlb_entry[i] <= {63{1'b0}};
         end 
         else if (tlb_write_enable) begin
             tlb_entry[tlb_write_index] <= tlb_write_entry;
-           // $display("tlb entry(%d) was written", tlb_write_index);
-           // $display("VPN2 = %b, P1 = (%b, %b), P0 = (%b, %b)", tlb_write_entry[62:44], 
-           //     tlb_write_entry[43: 24], tlb_write_entry[23: 22], 
-           //     tlb_write_entry[21: 2], tlb_write_entry[1: 0]);
         end
 
     end

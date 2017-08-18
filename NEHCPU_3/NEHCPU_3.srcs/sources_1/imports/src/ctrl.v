@@ -11,9 +11,6 @@ module ctrl(
 	input wire[31: 0] excepttype_i,
 	input wire[`RegBus] cp0_epc_i,
 	input wire[`RegBus] exc_vec_addr_i, // exception vector address
-	// input wire is_tlb_modify,
- //   	input wire is_tlbl_data,
- //    input wire is_tlbs,
 
 	output reg[`RegBus] new_pc,
 	output reg flush,
@@ -30,9 +27,7 @@ module ctrl(
 			new_pc <= `ZeroWord;
 		end 
 		else if(excepttype_i != `ZeroWord) begin
-//			if(cp0_epc_i != `ZeroWord) begin 
 				flush <= 1'b1;
-				// $display("flush = %b", flush);
 				stall <= 6'b000000;
 				case (excepttype_i)
 					32'h00000001: begin  // interruption
@@ -60,12 +55,6 @@ module ctrl(
 					default : begin 
 					end
 				endcase
-//			end
-//			else begin
-//				stall <= 6'b000000;
-//				flush <= 1'b0;
-//				new_pc <= `ZeroWord;
-//			end
 		end
 		else if(stallreq_from_mem == `Stop) begin
 			stall <= 6'b011111;		
